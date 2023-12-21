@@ -17,7 +17,7 @@ function App() {
         <Nav />
         <div className="appWriperDialogs">
           <Routes>
-            <Route path="/dialogs" element={<Dialogs />} />
+            <Route path="/dialogs/*" element={<Dialogs />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
