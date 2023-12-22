@@ -9,7 +9,7 @@ import News from "./components/Profile/News/News.jsx";
 import Music from "./components/Profile/Music/Music.jsx";
 import Settings from "./components/Profile/Settin/Settings.jsx";
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
       <div className="app-wripper">
@@ -17,8 +17,19 @@ function App() {
         <Nav />
         <div className="appWriperDialogs">
           <Routes>
-            <Route path="/dialogs/*" element={<Dialogs />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/dialogs/*"
+              element={
+                <Dialogs
+                  dialogData={props.dialogData}
+                  messagesData={props.messagesData}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={<Profile postData={props.postData} />}
+            />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
