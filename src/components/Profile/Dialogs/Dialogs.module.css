@@ -12,9 +12,11 @@
 }
 
 .name {
-  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.messageItem {
-  padding: 20px;
+.avatar {
+  width: 40px;
 }
