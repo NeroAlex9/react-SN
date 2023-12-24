@@ -7,13 +7,19 @@ const MyPost = (props) => {
     <Post message={m.message} likeCount={m.like} />
   ));
 
+    
+  let butt = React.createRef()
+  let text = ()=>{
+    let buttValue = butt.current.value
+    alert(buttValue)
+  }
+
   return (
     <div className={style.content}>
       <div>My Post</div>
       <div>
-        <h3>NewPost</h3>
-        <input type="text" />
-        <button>Post</button>
+        <textarea ref={butt} ></textarea>
+        <button onClick={text} >Post</button>
       </div>
       {messageItem}
     </div>

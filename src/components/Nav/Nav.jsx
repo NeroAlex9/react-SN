@@ -1,8 +1,18 @@
 import React from "react";
 import style from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
+import AvaFriends from "../Profile/Friends/AvaFriends";
 
-const Nav = () => {
+
+
+
+
+const Nav = (props) => {
+
+  let bestFriends = props.stateFriends.dialogData.map((f) => (
+    <AvaFriends  id={f.id} avatar={f.avatar}  name={f.name}/>
+  ));
+
   return (
     <nav className={style.nav}>
       <div>
@@ -45,6 +55,13 @@ const Nav = () => {
           Settings
         </NavLink>
       </div>
+      <div className={style.friendsItem}>
+        <NavLink to={'/friends'} 
+        className={(a) => (a.isActive ? style.active : "")}
+        >Best friends</NavLink>
+      </div>
+        {bestFriends} 
+        
     </nav>
   );
 };

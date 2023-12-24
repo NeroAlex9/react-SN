@@ -1,0 +1,17 @@
+.avaBestFriends{
+    width: 30px;
+    height: 30px;
+}
+
+
+.bestFriendsBlock{
+    display: inline-block;
+   
+
+}
+
+.friendsItem{
+    padding-right: 9px;
+    width: 45px;
+    height: 45px;
+}

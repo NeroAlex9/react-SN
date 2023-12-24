@@ -4,6 +4,7 @@ import DialogItem from "./DialogElement/DialogElement";
 import MessageText from "./MessageElement/MessageElement";
 
 const Dialogs = (props) => {
+  
   let dialogElement = props.stateDialogs.dialogData.map((e) => (
     <DialogItem avatar={e.avatar} name={e.name} id={e.id} />
   ));
@@ -14,6 +15,7 @@ const Dialogs = (props) => {
 
   return (
     <div className={style.dialogs}>
+      
       <div className={style.users}>{dialogElement}</div>
       <div className={style.messages}>{messageElement}</div>
     </div>
@@ -21,3 +23,4 @@ const Dialogs = (props) => {
 };
 
 export default Dialogs;
+

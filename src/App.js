@@ -8,13 +8,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import News from "./components/Profile/News/News.jsx";
 import Music from "./components/Profile/Music/Music.jsx";
 import Settings from "./components/Profile/Settin/Settings.jsx";
+import Friends from "./components/Profile/Friends/Friends.jsx";
+
+
+
 
 function App(props) {
   return (
     <BrowserRouter>
       <div className="app-wripper">
         <Header />
-        <Nav />
+        <Nav stateFriends={props.state.dialogPage} />
         <div className="appWriperDialogs">
           <Routes>
             <Route
@@ -28,7 +32,9 @@ function App(props) {
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/friends/*" element={<Friends />}/> 
           </Routes>
+          
         </div>
       </div>
     </BrowserRouter>
