@@ -36,4 +36,13 @@ const state = {
   },
 };
 
+export let addPost = (newMesage)=>{
+  let post = {
+    message: newMesage,
+    like: "0"
+  }
+state.profilePage.postData.push(post)
+
+}
+
 export default state;

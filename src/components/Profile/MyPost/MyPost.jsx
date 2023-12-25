@@ -1,8 +1,10 @@
 import React from "react";
 import style from "./MyPost.module.css";
 import Post from "./Post/Post";
+import { addPost } from "../../../redux/state";
 
 const MyPost = (props) => {
+  
   const messageItem = props.postData.map((m) => (
     <Post message={m.message} likeCount={m.like} />
   ));
@@ -10,8 +12,9 @@ const MyPost = (props) => {
     
   let butt = React.createRef()
   let text = ()=>{
+   
     let buttValue = butt.current.value
-    alert(buttValue)
+    addPost(buttValue)
   }
 
   return (

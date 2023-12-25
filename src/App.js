@@ -27,7 +27,7 @@ function App(props) {
             />
             <Route
               path="/profile"
-              element={<Profile stateProfile={props.state.profilePage} />}
+              element={<Profile stateProfile={props.state.profilePage} addPost={props.addPost} />}
             />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
