@@ -15,6 +15,7 @@ const MyPost = (props) => {
    
     let buttValue = butt.current.value
     addPost(buttValue)
+    butt.current.value = ""
   }
 
   return (

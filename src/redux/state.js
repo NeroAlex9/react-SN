@@ -1,5 +1,4 @@
-import { scryRenderedComponentsWithType } from "react-dom/test-utils";
-
+import { renderEntireTree } from "../render";
 const state = {
   profilePage: {
     postData: [
@@ -37,12 +36,15 @@ const state = {
 };
 
 export let addPost = (newMesage)=>{
+
   let post = {
     message: newMesage,
     like: "0"
   }
 state.profilePage.postData.push(post)
+renderEntireTree(state)
 
 }
+
 
 export default state;
