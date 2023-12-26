@@ -11,18 +11,25 @@ const MyPost = (props) => {
 
     
   let butt = React.createRef()
-  let text = ()=>{
-   
+
+
+  let text = ()=>{  
     let buttValue = butt.current.value
-    addPost(buttValue)
-    butt.current.value = ""
+    if(buttValue.length>0)
+    {addPost(buttValue)
+       butt.current.value = ""
+      }
+      else{
+        butt.current.value = ""
+      }
+    
   }
 
   return (
     <div className={style.content}>
       <div>My Post</div>
       <div>
-        <textarea ref={butt} ></textarea>
+        <textarea ref={butt} placeholder="Введите текст" ></textarea>
         <button onClick={text} >Post</button>
       </div>
       {messageItem}
