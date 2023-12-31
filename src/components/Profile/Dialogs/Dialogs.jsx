@@ -4,14 +4,13 @@ import DialogItem from "./DialogElement/DialogElement";
 import MessageText from "./MessageElement/MessageElement";
 
 const Dialogs = (props) => {
+  let textMessage = React.createRef();
+  let visualText = () => {
+    let text = textMessage.current.value;
 
-let textMessage = React.createRef()
-let visualText = ()=>{
-  let text = textMessage.current.value
-  alert(text)
-}
+    alert(text);
+  };
 
-  
   let dialogElement = props.stateDialogs.dialogData.map((e) => (
     <DialogItem avatar={e.avatar} name={e.name} id={e.id} />
   ));
@@ -22,12 +21,12 @@ let visualText = ()=>{
 
   return (
     <div className={style.dialogs}>
-      
       <div className={style.users}>{dialogElement}</div>
-      <div className={style.messages}>{messageElement}
-      <div>
-        <textarea ref={textMessage} ></textarea> <br />
-        <button onClick={visualText} >Add Mesage</button>
+      <div className={style.messages}>
+        {messageElement}
+        <div>
+          <textarea ref={textMessage}></textarea> <br />
+          <button onClick={visualText}>Add Mesage</button>
         </div>
       </div>
     </div>
@@ -35,4 +34,3 @@ let visualText = ()=>{
 };
 
 export default Dialogs;
-

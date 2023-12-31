@@ -10,9 +10,6 @@ import Music from "./components/Profile/Music/Music.jsx";
 import Settings from "./components/Profile/Settin/Settings.jsx";
 import Friends from "./components/Profile/Friends/Friends.jsx";
 
-
-
-
 function App(props) {
   return (
     <BrowserRouter>
@@ -27,14 +24,19 @@ function App(props) {
             />
             <Route
               path="/profile"
-              element={<Profile stateProfile={props.state.profilePage} addPost={props.addPost} />}
+              element={
+                <Profile
+                  stateProfile={props.state.profilePage}
+                  newPostText={props.state.profilePage.newPostText}
+                  addPost={props.addPost}
+                />
+              }
             />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
-            <Route path="/friends/*" element={<Friends />}/> 
+            <Route path="/friends/*" element={<Friends />} />
           </Routes>
-          
         </div>
       </div>
     </BrowserRouter>

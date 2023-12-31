@@ -1,6 +1,10 @@
-import { renderEntireTree } from "../render";
+let renderEntireTree = () => {
+  console.log("rend");
+};
+
 const state = {
   profilePage: {
+    newPostText: "post-text",
     postData: [
       { message: "Hi", like: "10" },
       { message: "Hello", like: "20" },
@@ -35,16 +39,23 @@ const state = {
   },
 };
 
-export let addPost = (newMesage)=>{
+export const addText = (newText) => {
+  state.profilePage.newPostText = newText;
+  renderEntireTree(state);
+};
 
+export const addPost = (newMesage) => {
   let post = {
     message: newMesage,
-    like: "0"
-  }
-state.profilePage.postData.push(post)
-renderEntireTree(state)
+    like: "0",
+  };
+  state.profilePage.postData.push(post);
+  state.profilePage.newPostText = "";
+  renderEntireTree(state);
+};
 
-}
-
+export const obnovl = (observer) => {
+  renderEntireTree = observer;
+};
 
 export default state;

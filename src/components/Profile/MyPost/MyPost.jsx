@@ -1,36 +1,40 @@
 import React from "react";
 import style from "./MyPost.module.css";
 import Post from "./Post/Post";
-import { addPost } from "../../../redux/state";
+import { addPost, addText } from "../../../redux/state";
 
 const MyPost = (props) => {
-  
   const messageItem = props.postData.map((m) => (
     <Post message={m.message} likeCount={m.like} />
   ));
 
-    
-  let butt = React.createRef()
+  let text = React.createRef();
 
+  const onPostChange = () => {
+    let textValue = text.current.value;
+    addText(textValue);
+  };
 
-  let text = ()=>{  
-    let buttValue = butt.current.value
-    if(buttValue.length>0)
-    {addPost(buttValue)
-       butt.current.value = ""
-      }
-      else{
-        butt.current.value = ""
-      }
-    
-  }
+  let butt = () => {
+    let textValue = text.current.value;
+    if (textValue.length > 0) {
+      addPost(textValue);
+      text.current.value = "";
+    } else {
+      text.current.value = "";
+    }
+  };
 
   return (
     <div className={style.content}>
       <div>My Post</div>
       <div>
-        <textarea ref={butt} placeholder="Введите текст" ></textarea>
-        <button onClick={text} >Post</button>
+        <textarea
+          ref={text}
+          onChange={onPostChange}
+          value={props.newPostText}
+        />
+        <button onClick={butt}>Post</button>
       </div>
       {messageItem}
     </div>
