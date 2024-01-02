@@ -1,20 +1,19 @@
-import state, { obnovl } from "./redux/state";
+import store from "./redux/state";
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { addPost, addText } from "./redux/state";
 import App from "./App";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
-export let renderEntireTree = (state) => {
+let renderEntireTree = (state) => {
   root.render(
     <StrictMode>
-      <App state={state} addPost={addPost} newText={addText} />
+      <App state={state} addPost={store.addPost.bind(store)} newText={store.addText.bind(store)} />
     </StrictMode>
   );
 };
 
-renderEntireTree(state);
+renderEntireTree(store.renderState());
 
-obnovl(renderEntireTree);
+store.obnovl(renderEntireTree);

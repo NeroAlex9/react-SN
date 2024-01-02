@@ -1,7 +1,8 @@
 import React from "react";
 import style from "./MyPost.module.css";
 import Post from "./Post/Post";
-import { addPost, addText } from "../../../redux/state";
+import store, { addPost, addText } from "../../../redux/state";
+
 
 const MyPost = (props) => {
   const messageItem = props.postData.map((m) => (
@@ -12,13 +13,13 @@ const MyPost = (props) => {
 
   const onPostChange = () => {
     let textValue = text.current.value;
-    addText(textValue);
+    store.addText(textValue);
   };
 
   let butt = () => {
     let textValue = text.current.value;
     if (textValue.length > 0) {
-      addPost(textValue);
+      store.addPost(textValue);
       text.current.value = "";
     } else {
       text.current.value = "";
