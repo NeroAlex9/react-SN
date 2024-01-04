@@ -4,6 +4,7 @@ const store = {
   },
     _state:{
     profilePage: {
+      
       newPostText: "",
       postData: [
         { message: "Hi", like: "10" },
@@ -43,19 +44,20 @@ const store = {
     return this._state
   },
 
-  addText  (newText) {
-    this._state.profilePage.newPostText = newText;
-    this._renderEntireTree(this._state);
-  },
-  
-  addPost (newMesage) {
-    let post = {
-      message: newMesage,
-      like: "0",
-    };
-    this._state.profilePage.postData.push(post);
-    this._state.profilePage.newPostText = "";
-    this._renderEntireTree(this._state);
+  dispatch(action){
+    debugger;
+    if(action.type === "ADD-POST"){
+      let post = {
+        message: this._state.profilePage.newPostText,
+        like: "0",
+      };
+      this._state.profilePage.postData.push(post);
+      this._state.profilePage.newPostText = "";
+      this._renderEntireTree(this._state);
+    }else if(action.type === "NEW-TEXT"){
+      this._state.profilePage.newPostText = action.newText;
+      this._renderEntireTree(this._state);
+    }
   },
 
    obnovl (observer)  {

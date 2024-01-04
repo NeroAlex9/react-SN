@@ -10,15 +10,16 @@ const MyPost = (props) => {
     <Post message={m.message} likeCount={m.like} />
   ));
 
-    let addPost=(textValue)=>{
-     props.addPost(textValue)
+    let addPost=()=>{
+     props.dispatch({type:"ADD-POST"})
     }
 
   let text = React.createRef();
 
   const onPostChange = () => {
+    debugger;
     let textValue = text.current.value;
-    store.addText(textValue);
+    store.dispatch({type:"NEW-TEXT", newText: textValue});
   };
 
   let butt = () => {
