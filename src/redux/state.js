@@ -1,3 +1,9 @@
+const addPost = "ADD-POST"
+const addText = "NEW-TEXT"
+export const addPostActionCreator = () => ({type: addPost})
+export const newPostActionCreator = (textValue)=>({type: addText, newText: textValue}) 
+
+
 const store = {
   _renderEntireTree(){
     console.log("rend");
@@ -46,7 +52,7 @@ const store = {
 
   dispatch(action){
     debugger;
-    if(action.type === "ADD-POST"){
+    if(action.type === addPost){
       let post = {
         message: this._state.profilePage.newPostText,
         like: "0",
@@ -54,7 +60,7 @@ const store = {
       this._state.profilePage.postData.push(post);
       this._state.profilePage.newPostText = "";
       this._renderEntireTree(this._state);
-    }else if(action.type === "NEW-TEXT"){
+    }else if(action.type === addText){
       this._state.profilePage.newPostText = action.newText;
       this._renderEntireTree(this._state);
     }
@@ -65,5 +71,7 @@ const store = {
   },
 
 }
+
+
 
 export default store;
