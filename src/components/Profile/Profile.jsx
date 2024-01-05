@@ -11,6 +11,7 @@ const Profile = (props) => {
         postData={props.stateProfile.postData}
         dispatch ={props.dispatch}
         postText={props.newPostText}
+        newMessageText ={props.newMessageText}
       />
     </div>
   );

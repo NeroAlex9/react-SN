@@ -11,6 +11,7 @@ import Settings from "./components/Profile/Settin/Settings.jsx";
 import Friends from "./components/Profile/Friends/Friends.jsx";
 
 function App(props) {
+  
   return (
     <BrowserRouter>
       <div className="app-wripper">
@@ -20,7 +21,9 @@ function App(props) {
           <Routes>
             <Route
               path="/dialogs/*"
-              element={<Dialogs stateDialogs={props.state.dialogPage} />}
+              element={<Dialogs stateDialogs={props.state.dialogPage} 
+              dispatch={props.dispatch}
+              newMessageText ={props.state.dialogPage.newMessageText} />}
             />
             <Route
               path="/profile"
@@ -28,6 +31,7 @@ function App(props) {
                 <Profile
                   stateProfile={props.state.profilePage}
                   newPostText={props.state.profilePage.newPostText}
+                  
                   dispatch={props.dispatch}
                 />
               }

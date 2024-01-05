@@ -1,8 +1,12 @@
 const addPost = "ADD-POST"
 const addText = "NEW-TEXT"
+const addMessage = "NEW-MESSAGE"
+const addMesageText = "NEW-MESSAGE-TEXT"
+
 export const addPostActionCreator = () => ({type: addPost})
 export const newPostActionCreator = (textValue)=>({type: addText, newText: textValue}) 
-
+export const addMessageActionCreator =()=>({type:addMessage})
+export const newMessageActionCreator=(text)=>({type: addMesageText, newText: text})
 
 const store = {
   _renderEntireTree(){
@@ -37,7 +41,7 @@ const store = {
           avatar: "https://cdn-icons-png.flaticon.com/512/2784/2784386.png",
         },
       ],
-  
+      newMessageText: "",
       messagesData: [
         { message: "hi" },
         { message: "Hello" },
@@ -46,12 +50,13 @@ const store = {
     },
   },
 
+
+
   renderState(){
     return this._state
   },
 
   dispatch(action){
-    debugger;
     if(action.type === addPost){
       let post = {
         message: this._state.profilePage.newPostText,
@@ -60,8 +65,19 @@ const store = {
       this._state.profilePage.postData.push(post);
       this._state.profilePage.newPostText = "";
       this._renderEntireTree(this._state);
-    }else if(action.type === addText){
+    }
+    else if(action.type === addText){
       this._state.profilePage.newPostText = action.newText;
+      this._renderEntireTree(this._state);
+    }
+    else if(action.type === addMessage){ 
+      let message = {message:this._state.dialogPage.newMessageText};
+      this._state.dialogPage.messagesData.push(message);
+      this._state.dialogPage.newMessageText = ""
+      this._renderEntireTree(this._state);
+    }
+    else if(action.type === addMesageText){
+      this._state.dialogPage.newMessageText = action.newText;
       this._renderEntireTree(this._state);
     }
   },

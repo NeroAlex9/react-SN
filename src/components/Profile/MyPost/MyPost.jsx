@@ -1,20 +1,18 @@
 import React from "react";
 import style from "./MyPost.module.css";
 import Post from "./Post/Post";
-import store, { addPostActionCreator, newPostActionCreator } from "../../../redux/state";
-
-
-
+import store from "../../../redux/state";
 
 
 
 const MyPost = (props) => {
+  
   const messageItem = props.postData.map((m) => (
     <Post message={m.message} likeCount={m.like} />
   ));
 
     let addPost=()=>{
-     props.dispatch(addPostActionCreator())
+     props.dispatch({type:"ADD-POST"})
     }
 
   let text = React.createRef();
@@ -22,7 +20,7 @@ const MyPost = (props) => {
   const onPostChange = () => {
     debugger;
     let textValue = text.current.value;
-    store.dispatch(newPostActionCreator(textValue));
+    store.dispatch({type:"NEW-TEXT", newText: textValue});
   };
 
   let butt = () => {
