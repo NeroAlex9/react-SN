@@ -1,20 +1,12 @@
-const addPost = "ADD-POST"
-const addText = "NEW-TEXT"
-const addMessage = "NEW-MESSAGE"
-const addMesageText = "NEW-MESSAGE-TEXT"
-
-export const addPostActionCreator = () => ({type: addPost})
-export const newPostActionCreator = (textValue)=>({type: addText, newText: textValue}) 
-export const addMessageActionCreator =()=>({type:addMessage})
-export const newMessageActionCreator=(text)=>({type: addMesageText, newText: text})
+import dialogReducer from "./dialogs_reducer";
+import profileReducer from "./profile_reducer";
 
 const store = {
-  _renderEntireTree(){
+  _renderEntireTree() {
     console.log("rend");
   },
-    _state:{
+  _state: {
     profilePage: {
-      
       newPostText: "",
       postData: [
         { message: "Hi", like: "10" },
@@ -50,44 +42,19 @@ const store = {
     },
   },
 
-
-
-  renderState(){
-    return this._state
+  renderState() {
+    return this._state;
   },
 
-  dispatch(action){
-    if(action.type === addPost){
-      let post = {
-        message: this._state.profilePage.newPostText,
-        like: "0",
-      };
-      this._state.profilePage.postData.push(post);
-      this._state.profilePage.newPostText = "";
-      this._renderEntireTree(this._state);
-    }
-    else if(action.type === addText){
-      this._state.profilePage.newPostText = action.newText;
-      this._renderEntireTree(this._state);
-    }
-    else if(action.type === addMessage){ 
-      let message = {message:this._state.dialogPage.newMessageText};
-      this._state.dialogPage.messagesData.push(message);
-      this._state.dialogPage.newMessageText = ""
-      this._renderEntireTree(this._state);
-    }
-    else if(action.type === addMesageText){
-      this._state.dialogPage.newMessageText = action.newText;
-      this._renderEntireTree(this._state);
-    }
+  dispatch(action) {
+    dialogReducer(store._state.profilePage, action);
+    profileReducer(store._state.dialogPage, action);
+    this._renderEntireTree(this._state);
   },
 
-   obnovl (observer)  {
+  obnovl(observer) {
     this._renderEntireTree = observer;
   },
-
-}
-
-
+};
 
 export default store;

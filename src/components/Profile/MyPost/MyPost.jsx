@@ -2,25 +2,26 @@ import React from "react";
 import style from "./MyPost.module.css";
 import Post from "./Post/Post";
 import store from "../../../redux/state";
-
-
+import {
+  addPostActionCreator,
+  newPostActionCreator,
+} from "../../../redux/dialogs_reducer";
 
 const MyPost = (props) => {
-  
   const messageItem = props.postData.map((m) => (
     <Post message={m.message} likeCount={m.like} />
   ));
 
-    let addPost=()=>{
-     props.dispatch({type:"ADD-POST"})
-    }
+  let addPost = () => {
+    props.dispatch(addPostActionCreator());
+  };
 
   let text = React.createRef();
 
   const onPostChange = () => {
     debugger;
     let textValue = text.current.value;
-    store.dispatch({type:"NEW-TEXT", newText: textValue});
+    store.dispatch(newPostActionCreator(textValue));
   };
 
   let butt = () => {
