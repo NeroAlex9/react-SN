@@ -1,4 +1,4 @@
-import store from "./redux/state";
+import store from "./redux/store_redux";
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
@@ -14,6 +14,8 @@ let renderEntireTree = (state) => {
   );
 };
 
-renderEntireTree(store.renderState());
+renderEntireTree(store.getState());
 
-store.obnovl(renderEntireTree);
+store.subscribe(()=>{
+  let state = store.getState()
+  renderEntireTree(state)});

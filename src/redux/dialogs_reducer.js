@@ -7,7 +7,15 @@ export const newPostActionCreator = (textValue) => ({
   newText: textValue,
 });
 
-const dialogReducer = (state, action) => {
+let initState = {
+  newPostText: "",
+  postData: [
+    { message: "Hi", like: "10" },
+    { message: "Hello", like: "20" },
+  ],
+}
+
+const dialogReducer = (state = initState, action) => {
   switch (action.type) {
     case addPost: {
       let post = {

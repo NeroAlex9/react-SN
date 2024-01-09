@@ -42,19 +42,20 @@ const store = {
     },
   },
 
-  renderState() {
+  getState() {
     return this._state;
   },
 
   dispatch(action) {
-    dialogReducer(store._state.profilePage, action);
-    profileReducer(store._state.dialogPage, action);
+   this._state.profilePage = dialogReducer(store._state.profilePage, action);
+   this._state.dialogPage = profileReducer(store._state.dialogPage, action);
     this._renderEntireTree(this._state);
   },
 
-  obnovl(observer) {
+  subscribe(observer) {
     this._renderEntireTree = observer;
   },
 };
 
 export default store;
+
