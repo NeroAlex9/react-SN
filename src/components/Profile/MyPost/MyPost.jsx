@@ -1,33 +1,29 @@
 import React from "react";
 import style from "./MyPost.module.css";
 import Post from "./Post/Post";
-import store from "../../../redux/store_redux";
-import {
-  addPostActionCreator,
-  newPostActionCreator,
-} from "../../../redux/dialogs_reducer";
+
 
 const MyPost = (props) => {
+ 
   const messageItem = props.postData.map((m) => (
     <Post message={m.message} likeCount={m.like} />
   ));
 
-  let addPost = () => {
-    props.dispatch(addPostActionCreator());
+  let newPost = () => {
+    props.addPost();
   };
 
   let text = React.createRef();
 
-  const onPostChange = () => {
-    debugger;
+  const updatePostChange = () => {
     let textValue = text.current.value;
-    store.dispatch(newPostActionCreator(textValue));
+    props.onPostChange(textValue);
   };
 
   let butt = () => {
     let textValue = text.current.value;
     if (textValue.length > 0) {
-      addPost(textValue);
+      newPost(textValue);
       text.current.value = "";
     } else {
       text.current.value = "";
@@ -40,7 +36,7 @@ const MyPost = (props) => {
       <div>
         <textarea
           ref={text}
-          onChange={onPostChange}
+          onChange={updatePostChange}
           value={props.newPostText}
         />
         <button onClick={butt}>Post</button>

@@ -36,6 +36,7 @@ let initState = {
 };
 
 const profileReducer = (state = initState, action) => {
+
   switch (action.type) {
     case addMessage: {
       let message = { message: state.newMessageText };
