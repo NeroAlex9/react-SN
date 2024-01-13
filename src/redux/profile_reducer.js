@@ -39,14 +39,17 @@ const profileReducer = (state = initState, action) => {
 
   switch (action.type) {
     case addMessage: {
-      let message = { message: state.newMessageText };
-      state.messagesData.push(message);
-      state.newMessageText = "";
-      return state;
+      let stateCopy={...state}
+      stateCopy.messagesData=[...state.messagesData]
+      let message = { message: stateCopy.newMessageText };
+      stateCopy.messagesData.push(message);
+      stateCopy.newMessageText = "";
+      return stateCopy;
     }
     case addMesageText: {
-      state.newMessageText = action.newText;
-      return state;
+      let stateCopy={...state}
+      stateCopy.newMessageText = action.newText;
+      return stateCopy;
     }
     default:
       return state;

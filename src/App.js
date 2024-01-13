@@ -10,20 +10,20 @@ import Music from "./components/Profile/Music/Music.jsx";
 import Settings from "./components/Profile/Settin/Settings.jsx";
 import Friends from "./components/Profile/Friends/Friends.jsx";
 import DialogsContainer from "./components/Profile/Dialogs/DialogsContainer.jsx";
-
+import store from "./redux/store_redux.js";
 
 function App(props) {
   return (
     <BrowserRouter>
       <div className="app-wripper">
         <Header />
-        <Nav stateFriends={props.state.dialogPage} />
+        <Nav store= {store} />
         <div className="appWriperDialogs">
           <Routes>
             <Route
               path="/dialogs/*"
               element={<DialogsContainer
-              store={props.store}
+              store={store}
               
               //    stateDialogs={props.state.dialogPage} 
               // dispatch={props.dispatch}
@@ -34,7 +34,7 @@ function App(props) {
               path="/profile"
               element={
                 <Profile
-                  store = {props.store}
+                  store = {store}
                 />
               }
             />

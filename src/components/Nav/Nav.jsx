@@ -8,8 +8,9 @@ import AvaFriends from "../Profile/Friends/AvaFriends";
 
 
 const Nav = (props) => {
+let stateInit = props.store.getState()
 
-  let bestFriends = props.stateFriends.dialogData.map((f) => (
+  let bestFriends = stateInit.dialogPage.dialogData.map((f) => (
     <AvaFriends  id={f.id} avatar={f.avatar}  name={f.name}/>
   ));
 

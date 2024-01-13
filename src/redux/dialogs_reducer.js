@@ -16,19 +16,23 @@ let initState = {
 }
 
 const dialogReducer = (state = initState, action) => {
+
   switch (action.type) {
     case addPost: {
+      let stateCopy = {...state}
+      stateCopy.postData=[...state.postData]
       let post = {
-        message: state.newPostText,
+        message: stateCopy.newPostText,
         like: "0",
       };
-      state.postData.push(post);
-      state.newPostText = "";
-      return state;
+      stateCopy.postData.push(post);
+      stateCopy.newPostText = "";
+      return stateCopy;
     }
     case addText: {
-      state.newPostText = action.newText;
-      return state;
+      let stateCopy = {...state}
+      stateCopy.newPostText = action.newText;
+      return stateCopy;
     }
     default:
       return state;
