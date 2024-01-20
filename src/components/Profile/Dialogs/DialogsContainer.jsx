@@ -30,6 +30,7 @@ let mapStateToProps =(state)=>{
   }
 }
 
+
 let mapDispatchToProps = (dispatch)=>{
   return{
     addMesage: ()=>dispatch(addMessageActionCreator()),

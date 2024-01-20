@@ -11,6 +11,9 @@ import Settings from "./components/Profile/Settin/Settings.jsx";
 import Friends from "./components/Profile/Friends/Friends.jsx";
 import DialogsContainer from "./components/Profile/Dialogs/DialogsContainer.jsx";
 import store from "./redux/store_redux.js";
+import UsersContainer from "./components/Profile/Users/UsersContainer.jsx";
+
+
 
 function App(props) {
   return (
@@ -24,10 +27,6 @@ function App(props) {
               path="/dialogs/*"
               element={<DialogsContainer
               store={store}
-              
-              //    stateDialogs={props.state.dialogPage} 
-              // dispatch={props.dispatch}
-              // newMessageText ={props.state.dialogPage.newMessageText} 
               />}
             />
             <Route
@@ -38,6 +37,7 @@ function App(props) {
                 />
               }
             />
+            <Route path="/users" element={<UsersContainer />} />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />

@@ -34,6 +34,15 @@ let stateInit = props.store.getState()
       </div>
       <div>
         <NavLink
+        to={'/users'} 
+        className={(a)=>(a.isActive ? style.active : "")}
+        >
+          Users
+        </NavLink>
+      </div>
+
+      <div>
+        <NavLink
           to={"/news"}
           className={(a) => (a.isActive ? style.active : "")}
         >
