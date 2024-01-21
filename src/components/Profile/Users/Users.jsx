@@ -13,18 +13,18 @@ const Users = (props) => {
               {u.followed ? (
                 <button
                   onClick={() => {
-                    props.follow(u.id);
-                  }}
-                >
-                  Follow
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
                     props.unFollow(u.id);
                   }}
                 >
                   Unfollow
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    props.follow(u.id);
+                  }}
+                >
+                  follow
                 </button>
               )}
             </div>

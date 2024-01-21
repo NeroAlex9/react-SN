@@ -54,7 +54,7 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         users: state.users.map((u) => {
           if (u.id === action.userID) {
-            return { ...u, followed: false };
+            return { ...u, followed: false};
           }
           return u;
         }),
