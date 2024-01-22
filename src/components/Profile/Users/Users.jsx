@@ -3,12 +3,11 @@ import style from "./Users.module.css";
 import axios from "axios";
 
 class Users extends React.Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
     axios
       .get("https://social-network.samuraijs.com/api/1.0/users")
       .then((respons) => {
-        props.setUsers(respons.data.items);
+        this.props.setUsers(respons.data.items);
       });
   }
 
