@@ -1,6 +1,3 @@
-import React from "react";
-import {type} from "@testing-library/user-event/dist/type";
-
 let follow = "FOLLOW";
 let unFollow = "UNFOLLOW";
 let setUsers = "SET_USERS";

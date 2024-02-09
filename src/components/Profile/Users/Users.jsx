@@ -10,7 +10,6 @@ const Users = (props) => {
     for(let i =1; i <= pages; i++ ){
         pagesArrey.push(i)
     }
-    debugger
     return <div>
         <div>
             {pagesArrey.map((e) => {
