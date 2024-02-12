@@ -3,6 +3,7 @@ let unFollow = "UNFOLLOW";
 let setUsers = "SET_USERS";
 let pageSize="PAGE_SIZE"
 let activePage = "ACTIVE_PAGE"
+let toggleIsFatching = "TOGGLE_IS_FATCHING"
 
 let initialState = {
   users: [
@@ -37,6 +38,7 @@ let initialState = {
   pageSize:0,
   totalUsersCount:10,
   activePage:1,
+  isFatching:false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -68,10 +70,13 @@ const usersReducer = (state = initialState, action) => {
       return { ...state, users: [...action.users] };
 
     case pageSize:
-      return{...state, pageSize: action.page}
+      return{...state, pageSize: action.page};
 
     case activePage:
-      return{...state, activePage: action.pageNumber}
+      return{...state, activePage: action.pageNumber};
+
+    case toggleIsFatching:
+      return{...state, isFatching: action.fatching };
 
     default:
       return state;
@@ -82,6 +87,8 @@ export let followAC = (userID) => ({ type: follow, userID });
 export let unFollowAC = (userID) => ({ type: unFollow, userID });
 export let setUserAC = (users) => ({ type: setUsers, users });
 export let pageSizeAC = (page)=>({type:pageSize, page})
+
+export let isFatchingAc=(fatching)=>({type:toggleIsFatching, fatching})
 
 export let activePageAC = (pageNumber)=>({type:activePage, pageNumber})
 
