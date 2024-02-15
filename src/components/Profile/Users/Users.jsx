@@ -11,13 +11,15 @@ const Users = (props) => {
         pagesArrey.push(i)
     }
     return <div>
-        <div>
+        <ul className={style.list}>
+            <p>Pages:</p>
             {pagesArrey.map((e) => {
-                return <span onClick={() => {
+                return <li onClick={() => {
                     props.updatePage(e)
-                }} className={props.activePage === e ? style.active : style.page}>{` ${e}`}</span>
+                }} className={props.activePage === e ? style.active : style.page}>{e}</li>
             })}
-        </div>
+        </ul>
+        <p>Active page:{props.activePage}</p>
 
 
         {props.users.map((u) => (

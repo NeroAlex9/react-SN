@@ -4,8 +4,18 @@
 
 .active{
     color: #cccccc;
+    padding-right: 5px;
 }
 .page{
     cursor: pointer;
+    padding-right: 5px;
+}
+
+.list{
+    display: flex;
+    list-style: none;
+    border: 3px solid black;
+    max-width: 1000px;
+    overflow-y: scroll
 }
 
