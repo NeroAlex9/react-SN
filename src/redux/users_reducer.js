@@ -1,9 +1,9 @@
-let follow = "FOLLOW";
-let unFollow = "UNFOLLOW";
-let setUsers = "SET_USERS";
-let pageSize="PAGE_SIZE"
-let activePage = "ACTIVE_PAGE"
-let toggleIsFatching = "TOGGLE_IS_FATCHING"
+let FOLLOW = "FOLLOW";
+let UNFOLLOW = "UNFOLLOW";
+let SET_USERS = "SET_USERS";
+let PAGE_SIZE="PAGE_SIZE"
+let ACTIVE_PAGES = "ACTIVE_PAGES"
+let TOGGLE_IS_FATCHING = "TOGGLE_IS_FATCHING"
 
 let initialState = {
   users: [
@@ -43,7 +43,7 @@ let initialState = {
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case follow:
+    case FOLLOW:
       return {
         ...state,
         users: state.users.map((u) => {
@@ -54,7 +54,7 @@ const usersReducer = (state = initialState, action) => {
         }),
       };
 
-    case unFollow:
+    case UNFOLLOW:
       return {
         ...state,
         users: state.users.map((u) => {
@@ -66,16 +66,16 @@ const usersReducer = (state = initialState, action) => {
       };
 
 
-    case setUsers:
+    case SET_USERS:
       return { ...state, users: [...action.users] };
 
-    case pageSize:
+    case PAGE_SIZE:
       return{...state, pageSize: action.page};
 
-    case activePage:
+    case ACTIVE_PAGES:
       return{...state, activePage: action.pageNumber};
 
-    case toggleIsFatching:
+    case TOGGLE_IS_FATCHING:
       return{...state, isFatching: action.fatching };
 
     default:
@@ -83,13 +83,13 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export let followAC = (userID) => ({ type: follow, userID });
-export let unFollowAC = (userID) => ({ type: unFollow, userID });
-export let setUserAC = (users) => ({ type: setUsers, users });
-export let pageSizeAC = (page)=>({type:pageSize, page})
+export let follow = (userID) => ({ type: FOLLOW, userID });
+export let unFollow = (userID) => ({ type: UNFOLLOW, userID });
+export let setUser = (users) => ({ type: SET_USERS, users });
+export let pageSize = (page)=>({type:PAGE_SIZE, page})
 
-export let isFatchingAc=(fatching)=>({type:toggleIsFatching, fatching})
+export let toggleIsFatching=(fatching)=>({type:TOGGLE_IS_FATCHING, fatching})
 
-export let activePageAC = (pageNumber)=>({type:activePage, pageNumber})
+export let activePages = (pageNumber)=>({type:ACTIVE_PAGES, pageNumber})
 
 export default usersReducer;
