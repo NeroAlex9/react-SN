@@ -47,8 +47,8 @@ const store = {
   },
 
   dispatch(action) {
-   this._state.profilePage = dialogReducer(store._state.profilePage, action);
-   this._state.dialogPage = profileReducer(store._state.dialogPage, action);
+   this._state.profilePage = profileReducer(store._state.profilePage, action);
+   this._state.dialogPage = dialogReducer(store._state.dialogPage, action);
     this._renderEntireTree(this._state);
   },
 

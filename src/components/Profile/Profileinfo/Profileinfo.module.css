@@ -3,5 +3,12 @@
 }
 
 .description {
+  display: flex;
+  flex-direction: column;
   padding-left: 10px;
+}
+
+.ava{
+  border-radius: 30px;
+  width: 100px;
 }

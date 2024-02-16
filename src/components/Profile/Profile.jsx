@@ -4,11 +4,11 @@ import style from "./Profile.module.css";
 import Profileinfo from "./Profileinfo/Profileinfo.jsx";
 import MyPostContainer from "./MyPost/MyPostContainer.jsx";
 
-const Profile = (props) => {
 
+const Profile = (props) => {
   return (
     <div className={style.content}>
-      <Profileinfo />
+      <Profileinfo profileUser={props.profileUser} />
       <MyPostContainer
         store={props.store}
         
