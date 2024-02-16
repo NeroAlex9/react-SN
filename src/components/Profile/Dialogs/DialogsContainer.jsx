@@ -3,7 +3,7 @@ import React from "react";
 import {
   addMessageActionCreator,
   newMessageActionCreator,
-} from "../../../redux/profile_reducer";
+} from "../../../redux/dialog_reucer";
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
 

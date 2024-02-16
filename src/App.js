@@ -2,8 +2,6 @@ import React from "react";
 import "./style.css";
 import Header from "./components/Header/Header.jsx";
 import Nav from "./components/Nav/Nav.jsx";
-import Profile from "./components/Profile/Profile.jsx";
-import Dialogs from "./components/Profile/Dialogs/Dialogs.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import News from "./components/Profile/News/News.jsx";
 import Music from "./components/Profile/Music/Music.jsx";
@@ -12,7 +10,7 @@ import Friends from "./components/Profile/Friends/Friends.jsx";
 import DialogsContainer from "./components/Profile/Dialogs/DialogsContainer.jsx";
 import store from "./redux/store_redux.js";
 import UsersContainer from "./components/Profile/Users/UsersContainer.jsx";
-
+import ProfileContainer from "./components/Profile/ProfilContainer";
 
 
 function App(props) {
@@ -30,9 +28,9 @@ function App(props) {
               />}
             />
             <Route
-              path="/profile"
+              path="/profile/*"
               element={
-                <Profile
+                <ProfileContainer
                   store = {store}
                 />
               }
