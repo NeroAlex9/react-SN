@@ -6,15 +6,15 @@ import MyPostContainer from "./MyPost/MyPostContainer.jsx";
 
 
 const Profile = (props) => {
-  return (
-    <div className={style.content}>
-      <Profileinfo profileUser={props.profileUser} />
-      <MyPostContainer
-        store={props.store}
-        
-      />
-    </div>
-  );
+    return (
+        <div className={style.content}>
+            <Profileinfo profileUser={props.profileUser}/>
+            <MyPostContainer
+                store={props.store}
+
+            />
+        </div>
+    );
 };
 
 export default Profile;

@@ -3,8 +3,8 @@ import Users from "./Users";
 import { connect } from "react-redux";
 import {activePages, follow, toggleIsFatching, pageSize, setUser, unFollow} from "../../../redux/users_reducer";
 import axios from "axios";
-import preloader from "../../../image/37.gif";
 import Preloader from "../../common/preloader/Preloader";
+import {setUserId} from "../../../redux/profile_reducer";
 
 
 
@@ -33,7 +33,6 @@ class UsersContainer extends React.Component {
           this.props.toggleIsFatching(false)
               this.props.setUser(respons.data.items);
               this.props.pageSize(respons.data.totalCount);
-
             }
         )
 
@@ -51,6 +50,7 @@ class UsersContainer extends React.Component {
                  users={this.props.users}
                  follow={this.props.follow}
                  unFollow={this.props.unFollow}
+                 setUserId={this.props.setUserId}
 
       />}
 
@@ -98,6 +98,6 @@ let mapStateToProps = (state) => {
 //
 //   };
 // };
-export default connect(mapStateToProps, {follow, unFollow,setUser,pageSize,toggleIsFatching,activePages})(UsersContainer);
+export default connect(mapStateToProps, {follow, unFollow,setUser,pageSize,toggleIsFatching,activePages, setUserId})(UsersContainer);
 
 

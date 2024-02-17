@@ -6,11 +6,15 @@ import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
 
+    debugger
     let pages = Math.ceil(props.pages / props.totalUsersCount)
     let pagesArrey = []
     for(let i =1; i <= pages; i++ ){
         pagesArrey.push(i)
     }
+
+
+
     return <div>
         <ul className={style.list}>
             <p>Pages:</p>
@@ -26,8 +30,9 @@ const Users = (props) => {
         {props.users.map((u) => (
 
             <div key={u.id}>
+
             <span>
-                <NavLink to={'/profile/' + u.id}>
+                <NavLink onClick={()=>{props.setUserId(u.id)}} to={'/profile/' + u.id}>
               <img
                   className={style.avatar}
                   src={
