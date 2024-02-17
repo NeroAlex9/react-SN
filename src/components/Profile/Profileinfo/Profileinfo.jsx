@@ -17,7 +17,9 @@ const Profileinfo = (props) => {
             </div>
             <div className={style.description}>
                 Name: {props.profileUser.fullName}
-                <img className={style.ava} src={props.profileUser.photos.small} alt="ava"/>
+                <img className={style.ava} src={props.profileUser.photos.small
+                    ? props.profileUser.photos.small
+                    : "https://cdn.icon-icons.com/icons2/1390/PNG/512/atom_96224.png" } alt="ava"/>
             </div>
         </div>
     );
