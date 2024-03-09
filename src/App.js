@@ -1,6 +1,5 @@
 import React from "react";
 import "./style.css";
-import Header from "./components/Header/Header.jsx";
 import Nav from "./components/Nav/Nav.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import News from "./components/Profile/News/News.jsx";
@@ -11,13 +10,14 @@ import DialogsContainer from "./components/Profile/Dialogs/DialogsContainer.jsx"
 import store from "./redux/store_redux.js";
 import UsersContainer from "./components/Profile/Users/UsersContainer.jsx";
 import ProfileContainer from "./components/Profile/ProfilContainer";
+import HeaderContainer from "./components/Header/HeaderContainer.jsx";
 
 
 function App(props) {
   return (
     <BrowserRouter>
       <div className="app-wripper">
-        <Header />
+        <HeaderContainer />
         <Nav store= {store} />
         <div className="appWriperDialogs">
           <Routes>

@@ -1,8 +1,23 @@
 .header {
+  display: flex;
+  justify-content: space-between;
   grid-area: h;
   background-color: black;
+  align-items: center;
 }
 
 .header img {
-  width: 50px;
+  width: 100px;
+}
+
+.login{
+  color: antiquewhite;
+  text-decoration: none;
+  cursor: pointer;
+  padding-right: 10px;
+  color: antiquewhite;
+}
+
+.login:hover {
+  color: rgb(146, 146, 245);
 }

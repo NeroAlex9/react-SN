@@ -18,7 +18,6 @@ class UsersContainer extends React.Component {
               this.props.toggleIsFatching(false)
               this.props.setUser(respons.data.items);
               this.props.pageSize(respons.data.totalCount);
-
             }
         );
 
