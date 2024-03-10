@@ -5,8 +5,6 @@ import {NavLink} from "react-router-dom";
 
 
 const Users = (props) => {
-
-    debugger
     let pages = Math.ceil(props.pages / props.totalUsersCount)
     let pagesArrey = []
     for(let i =1; i <= pages; i++ ){

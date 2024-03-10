@@ -15,9 +15,9 @@
   text-decoration: none;
   cursor: pointer;
   padding-right: 10px;
-  color: antiquewhite;
 }
 
 .login:hover {
   color: rgb(146, 146, 245);
 }
+
