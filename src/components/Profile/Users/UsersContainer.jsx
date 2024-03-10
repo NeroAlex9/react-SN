@@ -2,9 +2,9 @@ import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
 import {activePages, follow, toggleIsFatching, pageSize, setUser, unFollow} from "../../../redux/users_reducer";
-import axios from "axios";
 import Preloader from "../../common/preloader/Preloader";
 import {setUserId} from "../../../redux/profile_reducer";
+import {usersApi} from "../../../Api/api";
 
 
 
@@ -12,12 +12,10 @@ class UsersContainer extends React.Component {
 
   componentDidMount() {
     this.props.toggleIsFatching(true)
-    axios
-        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.activePage}&count=${this.props.totalUsersCount}`, {withCredentials:true})
-        .then((respons) => {
+   usersApi.getUsers(this.props.activePage, this.props.totalUsersCount).then((data) => {
               this.props.toggleIsFatching(false)
-              this.props.setUser(respons.data.items);
-              this.props.pageSize(respons.data.totalCount);
+              this.props.setUser(data.items);
+              this.props.pageSize(data.totalCount);
             }
         );
 
@@ -26,12 +24,11 @@ class UsersContainer extends React.Component {
   updatePage=(e)=>{
     this.props.toggleIsFatching(true)
     this.props.activePages(e);
-    axios
-        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${e}&count=${this.props.totalUsersCount}`, {withCredentials:true})
-        .then((respons) => {
+      usersApi.getUsers(e, this.props.totalUsersCount)
+        .then((data) => {
           this.props.toggleIsFatching(false)
-              this.props.setUser(respons.data.items);
-              this.props.pageSize(respons.data.totalCount);
+              this.props.setUser(data.items);
+              this.props.pageSize(data.totalCount);
             }
         )
 
