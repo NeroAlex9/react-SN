@@ -13,7 +13,7 @@ class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.toggleIsFatching(true)
     axios
-        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.activePage}&count=${this.props.totalUsersCount}`)
+        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.activePage}&count=${this.props.totalUsersCount}`, {withCredentials:true})
         .then((respons) => {
               this.props.toggleIsFatching(false)
               this.props.setUser(respons.data.items);
@@ -27,7 +27,7 @@ class UsersContainer extends React.Component {
     this.props.toggleIsFatching(true)
     this.props.activePages(e);
     axios
-        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${e}&count=${this.props.totalUsersCount}`)
+        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${e}&count=${this.props.totalUsersCount}`, {withCredentials:true})
         .then((respons) => {
           this.props.toggleIsFatching(false)
               this.props.setUser(respons.data.items);
