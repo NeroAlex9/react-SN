@@ -1,7 +1,15 @@
 import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
-import {activePages, follow, toggleIsFatching, pageSize, setUser, unFollow} from "../../../redux/users_reducer";
+import {
+    activePages,
+    follow,
+    toggleIsFatching,
+    pageSize,
+    setUser,
+    unFollow,
+    toggleFollowingProgress
+} from "../../../redux/users_reducer";
 import Preloader from "../../common/preloader/Preloader";
 import {setUserId} from "../../../redux/profile_reducer";
 import {usersApi} from "../../../Api/api";
@@ -47,6 +55,8 @@ class UsersContainer extends React.Component {
                  follow={this.props.follow}
                  unFollow={this.props.unFollow}
                  setUserId={this.props.setUserId}
+                 followingProgress={this.props.followingProgress}
+                 toggleFollowingProgress={this.props.toggleFollowingProgress}
 
       />}
 
@@ -64,36 +74,9 @@ let mapStateToProps = (state) => {
     totalUsersCount: state.usersPage.totalUsersCount,
     activePage: state.usersPage.activePage,
     isFatching:state.usersPage.isFatching,
+      followingProgress: state.usersPage.followingProgress
   };
 };
-
-// let mapDispatchToProps = (dispatch) => {
-//
-//   return {
-//     follow: (userID) => {
-//       dispatch(followAC(userID));
-//     },
-//     unFollow: (userID) => {
-//       dispatch(unFollowAC(userID));
-//     },
-//     setUsers: (users) => {
-//       dispatch(setUserAC(users));
-//     },
-//     pageSize:(page)=>{
-//       dispatch(pageSizeAC(page))
-//     },
-//
-//     activePageUpdate:(pageNumber)=>{
-//       dispatch(activePageAC(pageNumber))
-//     },
-//
-//     toggleFatching:(fatching)=>{
-//       dispatch(isFatchingAc(fatching))
-//     },
-//
-//
-//   };
-// };
-export default connect(mapStateToProps, {follow, unFollow,setUser,pageSize,toggleIsFatching,activePages, setUserId})(UsersContainer);
+export default connect(mapStateToProps, {follow, unFollow,setUser,pageSize,toggleIsFatching,activePages, setUserId, toggleFollowingProgress})(UsersContainer);
 
 

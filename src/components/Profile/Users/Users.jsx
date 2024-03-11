@@ -31,7 +31,7 @@ const Users = (props) => {
             <div key={u.id}>
 
             <span>
-                <NavLink onClick={()=>{props.setUserId(u.id)}} to={'/profile/' + u.id}>
+                <NavLink  onClick={()=>{props.setUserId(u.id)}} to={'/profile/' + u.id}>
               <img
                   className={style.avatar}
                   src={
@@ -45,13 +45,15 @@ const Users = (props) => {
               <div>
                 {u.followed ? (
                     <button
-
+                        disabled={props.followingProgress.some(id=>id===u.id)}
                         onClick={() => {
+                            props.toggleFollowingProgress(true, u.id)
                             usersApi.unFollov(u.id)
                                 .then((data) => {
                                         if(data.resultCode===0){
                                             props.unFollow(u.id);
                                         }
+                                    props.toggleFollowingProgress(false, u.id)
                                     }
                                 );
                         }}
@@ -60,12 +62,15 @@ const Users = (props) => {
                     </button>
                 ) : (
                     <button
+                        disabled={props.followingProgress.some(id=>id===u.id)}
                         onClick={() => {
+                            props.toggleFollowingProgress(true, u.id)
                             usersApi.follov(u.id)
                                 .then((data) => {
                                     if(data.resultCode===0){
                                         props.follow(u.id);
                                     }
+                                    props.toggleFollowingProgress(false, u.id)
                                     }
                                 );
                         }}

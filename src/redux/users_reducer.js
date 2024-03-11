@@ -4,6 +4,8 @@ let SET_USERS = "SET_USERS";
 let PAGE_SIZE="PAGE_SIZE"
 let ACTIVE_PAGES = "ACTIVE_PAGES"
 let TOGGLE_IS_FATCHING = "TOGGLE_IS_FATCHING"
+let TOGGLE_IN_FOLLOW = "TOGGLE_IN_FOLLOW"
+
 
 let initialState = {
   users: [
@@ -38,6 +40,7 @@ let initialState = {
   pageSize:0,
   totalUsersCount:10,
   activePage:1,
+  followingProgress: [],
   isFatching:false,
 };
 
@@ -78,6 +81,13 @@ const usersReducer = (state = initialState, action) => {
     case TOGGLE_IS_FATCHING:
       return{...state, isFatching: action.fatching };
 
+    case TOGGLE_IN_FOLLOW:
+      return{...state, followingProgress:
+            action.isFatching
+            ? [...state.followingProgress, action.uId]
+            : state.followingProgress.filter(uId => uId !== action.uId)
+      };
+
     default:
       return state;
   }
@@ -91,5 +101,6 @@ export let pageSize = (page)=>({type:PAGE_SIZE, page})
 export let toggleIsFatching=(fatching)=>({type:TOGGLE_IS_FATCHING, fatching})
 
 export let activePages = (pageNumber)=>({type:ACTIVE_PAGES, pageNumber})
+export let toggleFollowingProgress = (isFatching, uId)=>({type:TOGGLE_IN_FOLLOW, isFatching, uId})
 
 export default usersReducer;
