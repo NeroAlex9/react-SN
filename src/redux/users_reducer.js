@@ -1,3 +1,5 @@
+import {usersApi} from "../Api/api";
+
 let FOLLOW = "FOLLOW";
 let UNFOLLOW = "UNFOLLOW";
 let SET_USERS = "SET_USERS";
@@ -102,5 +104,21 @@ export let toggleIsFatching=(fatching)=>({type:TOGGLE_IS_FATCHING, fatching})
 
 export let activePages = (pageNumber)=>({type:ACTIVE_PAGES, pageNumber})
 export let toggleFollowingProgress = (isFatching, uId)=>({type:TOGGLE_IN_FOLLOW, isFatching, uId})
+
+
+ export const getUsers =(activePage, totalUsersCount)=>{
+  return (dispatch)=>{
+    dispatch(toggleIsFatching(true));
+    usersApi.getUsers(activePage, totalUsersCount).then((data) => {
+          dispatch(toggleIsFatching(false));
+          dispatch(setUser(data.items));
+          dispatch(pageSize(data.totalCount));
+        }
+    );
+  }
+
+
+}
+
 
 export default usersReducer;

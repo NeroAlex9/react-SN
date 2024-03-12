@@ -8,7 +8,8 @@ import {
     pageSize,
     setUser,
     unFollow,
-    toggleFollowingProgress
+    toggleFollowingProgress,
+    getUsers
 } from "../../../redux/users_reducer";
 import Preloader from "../../common/preloader/Preloader";
 import {setUserId} from "../../../redux/profile_reducer";
@@ -19,26 +20,14 @@ import {usersApi} from "../../../Api/api";
 class UsersContainer extends React.Component {
 
   componentDidMount() {
-    this.props.toggleIsFatching(true)
-   usersApi.getUsers(this.props.activePage, this.props.totalUsersCount).then((data) => {
-              this.props.toggleIsFatching(false)
-              this.props.setUser(data.items);
-              this.props.pageSize(data.totalCount);
-            }
-        );
+    this.props.getUsers(this.props.activePage, this.props.totalUsersCount)
 
   };
 
   updatePage=(e)=>{
-    this.props.toggleIsFatching(true)
-    this.props.activePages(e);
-      usersApi.getUsers(e, this.props.totalUsersCount)
-        .then((data) => {
-          this.props.toggleIsFatching(false)
-              this.props.setUser(data.items);
-              this.props.pageSize(data.totalCount);
-            }
-        )
+      this.props.activePages(e);
+      this.props.getUsers(e, this.props.totalUsersCount)
+
 
   };
 
@@ -77,6 +66,6 @@ let mapStateToProps = (state) => {
       followingProgress: state.usersPage.followingProgress
   };
 };
-export default connect(mapStateToProps, {follow, unFollow,setUser,pageSize,toggleIsFatching,activePages, setUserId, toggleFollowingProgress})(UsersContainer);
+export default connect(mapStateToProps, {follow, unFollow,activePages, setUserId, toggleFollowingProgress, getUsers})(UsersContainer);
 
 
