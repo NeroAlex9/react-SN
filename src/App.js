@@ -11,6 +11,7 @@ import store from "./redux/store_redux.js";
 import UsersContainer from "./components/Profile/Users/UsersContainer.jsx";
 import ProfileContainer from "./components/Profile/ProfilContainer";
 import HeaderContainer from "./components/Header/HeaderContainer.jsx";
+import Login from "./components/login/Login";
 
 
 function App(props) {
@@ -40,6 +41,7 @@ function App(props) {
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/friends/*" element={<Friends />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>

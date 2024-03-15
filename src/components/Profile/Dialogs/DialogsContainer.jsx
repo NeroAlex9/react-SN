@@ -26,7 +26,8 @@ let mapStateToProps =(state)=>{
   return{
     dialogData:state.dialogPage.dialogData,
     messagesData: state.dialogPage.messagesData,
-    newMessageText: state.dialogPage.newMessageText
+    newMessageText: state.dialogPage.newMessageText,
+    isAuth: state.auth.isAuth
   }
 }
 
