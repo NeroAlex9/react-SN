@@ -116,8 +116,34 @@ export let toggleFollowingProgress = (isFatching, uId)=>({type:TOGGLE_IN_FOLLOW,
         }
     );
   }
+}
 
+export const unFollowUser = (id)=>{
+  return (dispatch)=>{
+    dispatch(toggleFollowingProgress(true, id))
+    usersApi.unFollov(id)
+        .then((data) => {
+              if(data.resultCode===0){
+                dispatch(unFollow(id));
+              }
+              dispatch(toggleFollowingProgress(false, id))
+            }
+        );
+  }
+}
 
+export const followUser = (id)=>{
+  return (dispatch)=>{
+    dispatch(toggleFollowingProgress(true, id))
+    usersApi.follov(id)
+        .then((data) => {
+              if(data.resultCode===0){
+                dispatch(follow(id));
+              }
+              dispatch(toggleFollowingProgress(false, id))
+            }
+        );
+  }
 }
 
 

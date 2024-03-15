@@ -2,9 +2,6 @@ import dialogReducer from "./profile_reducer";
 import profileReducer from "./dialog_reucer";
 
 const store = {
-  _renderEntireTree() {
-    console.log("rend");
-  },
   _state: {
     profilePage: {
       newPostText: "",

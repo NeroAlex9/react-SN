@@ -15,13 +15,6 @@ export const usersApi = {
                 return response.data
             })
     },
-    getMeLoginInfo(){
-        return instance
-            .get(`auth/me`)
-            .then(response => {
-                return response.data
-            })
-    },
     getProfile(userId){
         return instance
             .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
@@ -43,4 +36,14 @@ export const usersApi = {
                 return response.data
             })
     }
+}
+
+export const loginApi = {
+    getMeLoginInfo(){
+        return instance
+            .get(`auth/me`)
+            .then(response => {
+                return response.data
+            })
+    },
 }

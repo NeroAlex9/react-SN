@@ -1,19 +1,12 @@
 import React from "react";
-
 import {connect} from "react-redux";
 import Profile from "./Profile";
+import {getProfileUser} from "../../redux/profile_reducer";
 
-import {setProfileUser} from "../../redux/profile_reducer";
-import {usersApi} from "../../Api/api";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-       usersApi.getProfile(this.props.userId)
-            .then((data) => {
-                    this.props.setProfileUser(data);
-                }
-
-            );
+       this.props.getProfileUser(this.props.userId)
 
     };
 
@@ -34,4 +27,4 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {setProfileUser})(ProfileContainer);
+export default connect(mapStateToProps, {getProfileUser})(ProfileContainer);

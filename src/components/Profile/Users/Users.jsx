@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Users.module.css";
 import {NavLink} from "react-router-dom";
-import {usersApi} from "../../../Api/api";
+
 
 
 
@@ -24,8 +24,6 @@ const Users = (props) => {
             })}
         </ul>
         <p>Active page:{props.activePage}</p>
-
-
         {props.users.map((u) => (
 
             <div key={u.id}>
@@ -47,15 +45,7 @@ const Users = (props) => {
                     <button
                         disabled={props.followingProgress.some(id=>id===u.id)}
                         onClick={() => {
-                            props.toggleFollowingProgress(true, u.id)
-                            usersApi.unFollov(u.id)
-                                .then((data) => {
-                                        if(data.resultCode===0){
-                                            props.unFollow(u.id);
-                                        }
-                                    props.toggleFollowingProgress(false, u.id)
-                                    }
-                                );
+                            props.unFollowUser(u.id)
                         }}
                     >
                         Unfollow
@@ -64,15 +54,8 @@ const Users = (props) => {
                     <button
                         disabled={props.followingProgress.some(id=>id===u.id)}
                         onClick={() => {
-                            props.toggleFollowingProgress(true, u.id)
-                            usersApi.follov(u.id)
-                                .then((data) => {
-                                    if(data.resultCode===0){
-                                        props.follow(u.id);
-                                    }
-                                    props.toggleFollowingProgress(false, u.id)
-                                    }
-                                );
+                            props.followUsers(u.id)
+
                         }}
                     >
                         follow

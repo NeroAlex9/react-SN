@@ -3,17 +3,10 @@ import Users from "./Users";
 import { connect } from "react-redux";
 import {
     activePages,
-    follow,
-    toggleIsFatching,
-    pageSize,
-    setUser,
-    unFollow,
-    toggleFollowingProgress,
-    getUsers
+    getUsers, followUser, unFollowUser
 } from "../../../redux/users_reducer";
 import Preloader from "../../common/preloader/Preloader";
 import {setUserId} from "../../../redux/profile_reducer";
-import {usersApi} from "../../../Api/api";
 
 
 
@@ -41,11 +34,10 @@ class UsersContainer extends React.Component {
                  activePage={this.props.activePage}
                  updatePage={this.updatePage}
                  users={this.props.users}
-                 follow={this.props.follow}
-                 unFollow={this.props.unFollow}
                  setUserId={this.props.setUserId}
                  followingProgress={this.props.followingProgress}
-                 toggleFollowingProgress={this.props.toggleFollowingProgress}
+                 followUsers={this.props.followUser}
+                 unFollowUser={this.props.unFollowUser}
 
       />}
 
@@ -66,6 +58,6 @@ let mapStateToProps = (state) => {
       followingProgress: state.usersPage.followingProgress
   };
 };
-export default connect(mapStateToProps, {follow, unFollow,activePages, setUserId, toggleFollowingProgress, getUsers})(UsersContainer);
+export default connect(mapStateToProps, {activePages, setUserId, getUsers, followUser, unFollowUser})(UsersContainer);
 
 
