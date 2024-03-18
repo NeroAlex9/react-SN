@@ -8,7 +8,7 @@ import MyPostContainer from "./MyPost/MyPostContainer.jsx";
 const Profile = (props) => {
     return (
         <div className={style.content}>
-            <Profileinfo profileUser={props.profileUser}/>
+            <Profileinfo profileUser={props.profileUser} status={props.status} myId={props.myId} userId={props.userId} updateStatusUser={props.updateStatusUser}/>
             <MyPostContainer
                 store={props.store}
 

@@ -5,6 +5,7 @@ import Status from "../Status/Status";
 
 
 
+
 const Profileinfo = (props) => {
     if (!props.profileUser) {
         return <Preloader/>
@@ -25,7 +26,7 @@ const Profileinfo = (props) => {
                 <div className={style.name}>
                     {props.profileUser.fullName}
                     <div>
-                        <Status status={"Hello"}/>
+                        <Status status={props.status} myId={props.myId} userId={props.userId} updateStatusUser={props.updateStatusUser}/>
                     </div>
                 </div>
 
