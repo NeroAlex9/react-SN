@@ -1,48 +1,53 @@
 import React from "react";
 import style from "./MyPost.module.css";
 import Post from "./Post/Post";
+import {Field, Form} from "react-final-form";
+
 
 
 const MyPost = (props) => {
- 
+
   const messageItem = props.postData.map((m) => (
     <Post message={m.message} likeCount={m.like} />
   ));
 
-  let newPost = () => {
-    props.addPost();
-  };
-
-  let text = React.createRef();
-
-  const updatePostChange = () => {
-    let textValue = text.current.value;
-    props.onPostChange(textValue);
-  };
-
-  let butt = () => {
-    let textValue = text.current.value;
-    if (textValue.length > 0) {
-      newPost(textValue);
-      text.current.value = "";
-    } else {
-      text.current.value = "";
+  let onSubmit=(e)=>{
+    if(e.postText){
+      props.onPostChange(e.postText)
+      props.addPost(e.postText)
     }
-  };
+  }
+  let validate=(e)=>{
 
-  return (
-    <div className={style.content}>
-      <div>My Post</div>
-      <div>
-        <textarea
-          ref={text}
-          onChange={updatePostChange}
-          value={props.newPostText}
-        />
-        <button onClick={butt}>Post</button>
+  }
+
+  const PostForm =()=>{
+    return<>
+      <Form
+          onSubmit={onSubmit}
+          validate={validate}
+          render={({ handleSubmit }) => (
+              <form onSubmit={handleSubmit}>
+               <Field
+                   name={'postText'}
+                   component={"textarea"}
+                   // ref={text}
+                   // onChange={updatePostChange}
+                   // value={props.newPostText}
+               />
+                <button>Post</button>
+              </form>
+          )}>
+      </Form>
+      </>
+      }
+
+      return (
+      <div className={style.content}>
+        <div>My Post</div>
+        <PostForm />
+        {messageItem}
       </div>
-      {messageItem}
-    </div>
   );
 };
 

@@ -30,10 +30,8 @@ class Status extends React.Component {
         })
     }
 
-
-
     render() {
-        debugger
+
         return <>
             {this.state.editMode && <div onClick={this.state.userId===this.state.myId ? this.activateStatus: null } >
                 Статус: {this.props.status}
