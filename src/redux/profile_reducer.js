@@ -1,7 +1,5 @@
 import {profileApi} from "../Api/api";
-
 const addPost = 'ADD-POST';
-const addText = 'NEW-TEXT';
 const PROFILE_USER = 'PROFILE_USER';
 const SET_USER = 'SET_USER'
 const SET_STATUS = 'SET_STATUS'
@@ -9,7 +7,6 @@ const SET_STATUS = 'SET_STATUS'
 
 
 let initState = {
-  newPostText: "",
   postData: [
     { message: "Hi", like: "10" },
     { message: "Hello", like: "20" },
@@ -25,18 +22,13 @@ const profileReducer = (state = initState, action) => {
       let stateCopy = {...state}
       stateCopy.postData=[...state.postData]
       let post = {
-        message: stateCopy.newPostText,
+        message: action.newText,
         like: "0",
       };
       stateCopy.postData.push(post);
-      stateCopy.newPostText = "";
       return stateCopy;
     }
-    case addText: {
-      let stateCopy = {...state}
-      stateCopy.newPostText = action.newText;
-      return stateCopy;
-    }
+
     case PROFILE_USER:{
       return {...state, profileUser: action.profile}
     }
@@ -52,11 +44,7 @@ const profileReducer = (state = initState, action) => {
   }
 };
 
-export const addPostActionCreator = () => ({ type: addPost });
-export const newPostActionCreator = (textValue) => ({
-  type: addText,
-  newText: textValue,
-});
+export const addPostActionCreator = (newText) => ({ type: addPost, newText });
 
 export const setProfileUser = (profile) =>({type: PROFILE_USER, profile})
 export const setUserId  = (userId)=>({type: SET_USER, userId})

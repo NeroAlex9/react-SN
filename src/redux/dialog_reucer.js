@@ -1,11 +1,4 @@
 const addMessage = "NEW-MESSAGE";
-const addMesageText = "NEW-MESSAGE-TEXT";
-
-export const addMessageActionCreator = () => ({ type: addMessage });
-export const newMessageActionCreator = (text) => ({
-  type: addMesageText,
-  newText: text,
-});
 
 let initState = {
   dialogData: [
@@ -27,7 +20,6 @@ let initState = {
       avatar: "https://cdn-icons-png.flaticon.com/512/2784/2784386.png",
     },
   ],
-  newMessageText: "",
   messagesData: [
     { message: "hi" },
     { message: "Hello" },
@@ -35,25 +27,23 @@ let initState = {
   ],
 };
 
+
+
 const dialogReducer = (state = initState, action) => {
 
   switch (action.type) {
     case addMessage: {
       let stateCopy={...state}
       stateCopy.messagesData=[...state.messagesData]
-      let message = { message: stateCopy.newMessageText };
+      let message = { message: action.newMessage};
       stateCopy.messagesData.push(message);
-      stateCopy.newMessageText = "";
-      return stateCopy;
-    }
-    case addMesageText: {
-      let stateCopy={...state}
-      stateCopy.newMessageText = action.newText;
       return stateCopy;
     }
     default:
       return state;
   }
 };
+
+export const addMessageActionCreator = (newMessage) => ({ type: addMessage, newMessage });
 
 export default dialogReducer;

@@ -20,3 +20,7 @@
 .avatar {
   width: 40px;
 }
+
+.form{
+  display: flex;
+}

@@ -1,32 +1,15 @@
 import {
   addMessageActionCreator,
-  newMessageActionCreator,
 } from "../../../redux/dialog_reucer";
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
-// const DialogsContainer = (props) => {
-  
-//   let store = props.store.getState()
-
-//   let newTextMessage = () => {
-//     props.store.dispatch(addMessageActionCreator());
-//   };
-
-//   let onTextChange = (text) => {
-//     props.store.dispatch(newMessageActionCreator(text));
-//   };
-
-//   return <Dialogs addMesage={newTextMessage} updateText = {onTextChange} dialogData={store.dialogPage.dialogData} messagesData={store.dialogPage.messagesData} newMessageText={store.dialogPage.newMessageText} />
-// };
-
 let mapStateToProps =(state)=>{
   return{
     dialogData:state.dialogPage.dialogData,
     messagesData: state.dialogPage.messagesData,
-    newMessageText: state.dialogPage.newMessageText,
     isAuth: state.auth.isAuth
   }
 }
@@ -34,19 +17,10 @@ let mapStateToProps =(state)=>{
 
 let mapDispatchToProps = (dispatch)=>{
   return{
-    addMesage: ()=>dispatch(addMessageActionCreator()),
-    updateText: (text)=>(dispatch(newMessageActionCreator(text)))
+    addMesage: (messageText)=>dispatch(addMessageActionCreator(messageText)),
 
   }
 }
-
-
-
-// let AuthRedirectComponent = withAuthRedirect(Dialogs)
-//
-// let DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent)
- 
-
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     withAuthRedirect,

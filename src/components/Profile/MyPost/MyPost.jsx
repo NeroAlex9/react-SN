@@ -13,12 +13,10 @@ const MyPost = (props) => {
 
   let onSubmit=(e)=>{
     if(e.postText){
-      props.onPostChange(e.postText)
       props.addPost(e.postText)
     }
   }
   let validate=(e)=>{
-
   }
 
   const PostForm =()=>{
@@ -31,9 +29,6 @@ const MyPost = (props) => {
                <Field
                    name={'postText'}
                    component={"textarea"}
-                   // ref={text}
-                   // onChange={updatePostChange}
-                   // value={props.newPostText}
                />
                 <button>Post</button>
               </form>
