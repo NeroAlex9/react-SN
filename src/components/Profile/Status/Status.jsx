@@ -1,49 +1,35 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 
-class Status extends React.Component {
-    state = {
-        myId:this.props.myId,
-        userId:this.props.userId,
-        editMode: true,
-        status: ""
+const Status =(props)=> {
+    let myId = props.myId
+    let userId = props.userId
+
+    const [editMode, setEditMode] = useState(true)
+    const [status, setStatus] = useState(props.status)
+
+    useEffect(()=>{
+        setStatus(props.status)
+    },[props.status])
+
+    const handleStatus = (event)=>{
+        setStatus(event.target.value);
+        props.updateStatusUser(event.target.value)
     }
 
-   activateStatus=()=>{
-        this.setState({
-            editMode: false,
-            status:this.props.status
-        })
-    }
-    deActivateStatus=()=>{
-        this.setState({
-            editMode: true
-        })
-        this.props.updateStatusUser(this.state.status)
-
-
-    }
-
-    onStateChange=(e)=>{
-        this.setState({
-            status: e.currentTarget.value
-        })
-    }
-
-    render() {
 
         return <>
-            {this.state.editMode && <div onClick={this.state.userId===this.state.myId ? this.activateStatus: null } >
-                Статус: {this.props.status}
+            {editMode && <div onClick={userId===myId ? ()=>setEditMode(false) : null } >
+                Статус: {status}
             </div>}
-            {!this.state.editMode &&
+            {!editMode &&
                 <div >
-                    <input  onChange={this.onStateChange} autoFocus={true} onBlur={this.deActivateStatus}  value={this.state.status} />
+                    <input  onChange={handleStatus} autoFocus={true} onBlur={()=>setEditMode(true)}  value={status} />
                 </div>
             }
 
         </>
-    }
+
 }
 
 export default Status;
