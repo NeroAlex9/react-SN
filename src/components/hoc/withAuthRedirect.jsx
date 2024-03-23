@@ -1,13 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
 
 export const withAuthRedirect=(Component)=>{
-    class RedirectComponent extends React.Component {
-        render(){
-            if(!this.props.isAuth){
-                return  <Navigate to='/login'/>
-            } return <Component {...this.props}/>
-        }
+
+     let RedirectComponent=(props)=> {
+         const [isAuth, setIsAuth]=useState(props.isAuth)
+         debugger
+         useEffect(()=>{
+             setIsAuth(props.isAuth)
+         },[props.isAuth])
+
+        return  <>
+    {
+    !isAuth ?  <Navigate to='/login'/> : <Component {...props}/>
+    }
+    </>
     }
     return RedirectComponent
 }

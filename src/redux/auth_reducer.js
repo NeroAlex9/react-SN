@@ -1,5 +1,6 @@
 import {loginApi} from "../Api/api";
 
+
 let AUTH_USER = "AUTH_USER";
 
 
@@ -12,6 +13,7 @@ let initialState = {
 };
 
 const authReducer = (state = initialState, action) => {
+
   switch (action.type) {
     case AUTH_USER:
       return {
@@ -26,7 +28,9 @@ const authReducer = (state = initialState, action) => {
 
 export let authUser = (id, email, login) => ({ type: AUTH_USER, data:{id, email, login} });
 
+
 export const getAuthUserData = () =>{
+
 
   return (dispatch)=>{
     loginApi.getMeLoginInfo()
