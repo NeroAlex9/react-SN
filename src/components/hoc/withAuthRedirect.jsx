@@ -5,7 +5,6 @@ export const withAuthRedirect=(Component)=>{
 
      let RedirectComponent=(props)=> {
          const [isAuth, setIsAuth]=useState(props.isAuth)
-         debugger
          useEffect(()=>{
              setIsAuth(props.isAuth)
          },[props.isAuth])
